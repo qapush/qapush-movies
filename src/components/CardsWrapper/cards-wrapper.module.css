@@ -1,8 +1,8 @@
-.cardsWrapper ul {
+.cardsWrapper {
+    margin: 0 auto;
+    padding: 0;
     display: flex;
+    flex-flow: row;
     flex-wrap: wrap;
-}
-
-.cardsWrapper li {
-    width: 200px;
+    max-width: 1280px;
 }

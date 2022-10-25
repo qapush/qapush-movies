@@ -4,12 +4,11 @@ import styles from './cards-wrapper.module.css';
 
 export default function CardWrapper({ movies }) {
   return (
-    <div className={styles.cardsWrapper}>
-      <ul>
+      <ul className={styles.cardsWrapper}>
         {movies.map((movie) => (
           <MovieCard movie={movie} key={movie.id} />
         ))}
       </ul>
-    </div>
+
   );
 }
