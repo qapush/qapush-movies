@@ -12,7 +12,16 @@
     background-color: rgb(251, 239, 255);
     height: 100%;
     margin: 5px;
+    position: relative;
 }
+
+.fav {
+    position: absolute;
+    width: 10%;
+    right: 2%;
+    top: 1%
+}
+
 
 @media (min-width: 375px) {
     .MovieCard {
