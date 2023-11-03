@@ -4,8 +4,8 @@ import { getMovies } from '../../utils/movies';
 const loadMovies = createAsyncThunk(
   'movies/fetchMovies',
   async () => {
-    const movies = await getMovies();
-    return movies
+      const movies = await getMovies();
+      return movies
   }
 )
 
@@ -19,6 +19,9 @@ const initialState = []
 
       builder.addCase(loadMovies.fulfilled, (state, action) => {
         state.push(...action.payload)
+      })
+      builder.addCase(loadMovies.rejected, (state, action) => {
+        console.error(action.error.message);
       })
     },
   })

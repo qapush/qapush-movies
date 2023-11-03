@@ -14,13 +14,18 @@ export default async (req, context) => {
 
     do {
 
-      response = await notion.databases.query({ 
-        database_id: process.env.DATABASE_ID,
-        start_cursor
-      });
+      try{
+
+        response = await notion.databases.query({ 
+          database_id: process.env.DATABASE_ID,
+          start_cursor
+        });
+
+      } catch(e){
+        return new Response(JSON.stringify({error: e.code}), {status: 500});
+      }
 
       data.push(...response.results);
-
       start_cursor = response.next_cursor;
 
     } while (response.has_more && response.next_cursor)
