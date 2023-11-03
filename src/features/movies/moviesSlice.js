@@ -1,4 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { getMovies } from '../../utils/movies';
+
+const loadMovies = createAsyncThunk(
+  'movies/fetchMovies',
+  async () => {
+    const movies = await getMovies();
+    return movies
+  }
+)
 
 const initialState = []
   
@@ -6,7 +15,14 @@ const initialState = []
     name: 'movies',
     initialState,
     reducers: {},
+    extraReducers: (builder) => {
+
+      builder.addCase(loadMovies.fulfilled, (state, action) => {
+        state.push(...action.payload)
+      })
+    },
   })
   
   
-  export default moviesSlice.reducer
+  export default moviesSlice.reducer;
+  export {loadMovies};

@@ -1,12 +1,33 @@
 import { Client } from "@notionhq/client";
 
+// eslint-disable-next-line
 export default async (req, context) => {
     
     const notion = new Client({ auth: process.env.NOTION });
-    const response = await notion.databases.retrieve({ database_id: process.env.DATABASE_ID });
+    let response;
+    let data = [];
+    let start_cursor = undefined;
+
+    // Notion database query has a limit of 100 items per request
+    // In case the database has more entries, make pagination requests 
+    // to add up entries to the data array
+
+    do {
+
+      response = await notion.databases.query({ 
+        database_id: process.env.DATABASE_ID,
+        start_cursor
+      });
+
+      data.push(...response.results);
+
+      start_cursor = response.next_cursor;
+
+    } while (response.has_more && response.next_cursor)
+
+    return new Response(JSON.stringify({data}));
 
 
-    return new Response(JSON.stringify(response));
   };
 
   export const config = {

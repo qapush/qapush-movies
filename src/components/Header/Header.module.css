@@ -2,5 +2,5 @@
     padding: 0.5rem 20px;
     background-color: #7094BE;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
