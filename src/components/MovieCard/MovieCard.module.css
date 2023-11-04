@@ -1,0 +1,18 @@
+.movieCard {
+    padding: 1rem;
+}
+
+.movieCard img {
+    width: 100%;
+}
+
+.genres {}
+
+.genre {
+    padding: 0.2rem;
+    border: 1px solid grey;
+    border-radius: 3px;
+    margin: 0.2rem 0.2rem 0.2rem 0;
+    display: inline-block;
+    font-size: 0.8rem;
+}

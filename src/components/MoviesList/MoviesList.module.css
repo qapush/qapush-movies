@@ -1,0 +1,6 @@
+.moviesList {
+    display: grid;
+    margin: auto;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    max-width: 900px;
+}

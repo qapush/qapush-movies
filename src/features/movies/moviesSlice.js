@@ -34,3 +34,4 @@ const initialState = {
 export default moviesSlice.reducer;
 export { fetchMovies };
 export const moviesLoading = state => state.movies.loading;
+export const moviesData = state => state.movies.movies;
