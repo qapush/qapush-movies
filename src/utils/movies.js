@@ -13,15 +13,27 @@ const  getMovies = async () => {
 }
 
 const formMoviesData = (data) => {
-    const result = data.map( ({id, properties: {Genre, Poster, Title, Tags, Year}}) => ({
-        title: Title.title[0].plain_text,
-        year: Year.number,
-        genres: Genre.multi_select.map( ({name, color}) => ({name, color})),
-        tags: Tags.multi_select.map( ({name, color}) => ({name, color})),
-        poster: Poster.files[0]?.file.url || null,
-        id
-    }))
+    
+    const result = {};
 
+    data.forEach(({ id, properties: { Genre, Poster, Title, Tags, Year } }) => {
+        result[id] = {
+            title: Title.title[0].plain_text,
+            year: Year.number,
+            genres: Genre.multi_select.map( ({name, id, color}) => ({name, id, color})),
+            tags: Tags.multi_select.map( ({name, id, color}) => ({name, id, color})),
+            poster: Poster.files[0]?.file.url || null,
+        }
+    })
+
+    // const result = data.map( ({id, properties: {Genre, Poster, Title, Tags, Year}}) => ({
+    //     title: Title.title[0].plain_text,
+    //     year: Year.number,
+    //     genres: Genre.multi_select.map( ({name, id, color}) => ({name, id, color})),
+    //     tags: Tags.multi_select.map( ({name, id, color}) => ({name, id, color})),
+    //     poster: Poster.files[0]?.file.url || null,
+    //     id
+    // }))
     return result;
 }
 
