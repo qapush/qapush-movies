@@ -44,7 +44,7 @@ export default function Filters() {
             </div>
             <div className={styles.clear_all}> 
                 <button
-                        className={styles.filter_button}
+                    className={styles.clear_button}
                         onClick={handleClear}
                         >
                         Clear all
