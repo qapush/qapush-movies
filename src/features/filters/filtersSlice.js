@@ -20,4 +20,7 @@ const initialState = {
   })
   
   
-  export default filtersSlice.reducer
+export default filtersSlice.reducer;
+export const selected = state => state.filters.selected;
+export const filters = state => state.filters.filters;
+  

@@ -4,7 +4,6 @@ import styles from './MovieCard.module.css';
 export default function MovieCard({ movie }) {
 
     const { genres, poster, title, year } = movie;
-
     return (
         <div className={styles.movieCard}>
             <img src={poster} alt={title} />
@@ -20,6 +19,6 @@ export default function MovieCard({ movie }) {
 
 const generateGenres = arr => {
     return arr.map(i => {
-        return <span className={styles.genre}>{ i.name }</span>
+        return <span className={styles.genre} key={i.id}>{ i.name }</span>
     } )
 }
