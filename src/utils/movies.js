@@ -22,18 +22,9 @@ const formMoviesData = (data) => {
             year: Year.number,
             genres: Genre.multi_select.map( ({name, id, color}) => ({name, id, color})),
             tags: Tags.multi_select.map( ({name, id, color}) => ({name, id, color})),
-            poster: Poster.files[0]?.file.url || null,
+            poster: Poster.files[0]?.file.url || process.env.PUBLIC_URL + '/no-poster.svg',
         }
     })
-
-    // const result = data.map( ({id, properties: {Genre, Poster, Title, Tags, Year}}) => ({
-    //     title: Title.title[0].plain_text,
-    //     year: Year.number,
-    //     genres: Genre.multi_select.map( ({name, id, color}) => ({name, id, color})),
-    //     tags: Tags.multi_select.map( ({name, id, color}) => ({name, id, color})),
-    //     poster: Poster.files[0]?.file.url || null,
-    //     id
-    // }))
     return result;
 }
 

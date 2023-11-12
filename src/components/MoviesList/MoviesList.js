@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { moviesData } from '../../features/movies/moviesSlice';
-import { selected, filters } from '../../features/filters/filtersSlice';
+import { selectedFiltersData, filtersData } from '../../features/filters/filtersSlice';
 import MovieCard from '../MovieCard/MovieCard';
 import styles from './MoviesList.module.css';
 import { filteredMovies } from '../../utils/filters';
@@ -9,8 +9,8 @@ import { filteredMovies } from '../../utils/filters';
 export default function MoviesList() {
 
   const movies = useSelector(moviesData);
-  const selectedFilters = useSelector(selected);
-  const moviesFilters = useSelector(filters);
+  const selectedFilters = useSelector(selectedFiltersData);
+  const moviesFilters = useSelector(filtersData);
   
   const moviesCards = selectedFilters.length > 0 ?
     filteredMovies(movies, moviesFilters, selectedFilters).map( movie => <MovieCard key={movie.id} movie={movie} />)
