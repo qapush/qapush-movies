@@ -21,22 +21,17 @@ export const filteredMovies = (movies, moviesFilters, selectedFilters) => {
     const moviesIds = [];
     const result = [];
     
-    // Get list of all movies for selected filters
+    // Get movie ids of selected filters
     for (const filterId of selectedFilters) {
-        const thisFilterMovies = moviesFilters[filterId].movies.filter(movieId => {
-            return !moviesIds.includes(movieId)
-        });
-        moviesIds.push(...thisFilterMovies)
+        for (const movieId of moviesFilters[filterId].movies) {
+            if (!moviesIds.includes(movieId)
+                && (movies[movieId].genres.some(genre => genre.id === filterId)
+                    || movies[movieId].tags.some(tag => tag.id === filterId))) {
+                    moviesIds.push(movieId);
+            }
+        }
     }
 
-    // Form an array of movies fo selected filters 
-    for (const movieId of moviesIds) {
-        const movie = {
-            ...movies[movieId],
-            id: movieId
-        };
-        result.push(movie);
-    }
-
+    console.log(moviesIds);
     return result;
 }
