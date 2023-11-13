@@ -1,6 +1,7 @@
 import styles from './Filters.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { hideFiltersPage, filtersData, toggleFilter, selectedFiltersData, clearFilters } from '../../features/filters/filtersSlice';
+import { useRef } from 'react';
 
 
 export default function Filters() {
@@ -12,11 +13,12 @@ export default function Filters() {
         dispatch(hideFiltersPage())
     }
 
-    const hadleClick = (e, id) => {
-        console.log(e.target.focus());
-        e.target.blur();
-        dispatch(toggleFilter(id))
+    const focusRef = useRef(null);
 
+    const hadleClick = (id) => {
+        
+        dispatch(toggleFilter(id))
+        focusRef.current.focus();
     }
 
     const handleClear = (id) => {
@@ -30,13 +32,13 @@ export default function Filters() {
         return <button
                     className={cssClass}
                     key={filterId}
-                    onClick={(e) => hadleClick(e, filterId)}
+                    onClick={() => hadleClick(filterId)}
                     >
                     {filters[filterId].name}
                 </button>
     })
     
-   
+    
     
     return (
         <div className={styles.filters}>
@@ -53,7 +55,14 @@ export default function Filters() {
                         onClick={handleClear}
                         >
                         Clear all
-                    </button>
+                </button>
+                <button
+                        className={styles.clear_button}
+                        onClick={handleClear}
+                        ref={focusRef}
+                        >
+                        Apply
+                </button>
                 </div>
         </div>
     )

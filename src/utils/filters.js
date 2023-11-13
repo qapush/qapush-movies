@@ -35,7 +35,5 @@ export const filteredMovies = (movies, moviesFilters, selectedFilters) => {
         }
     }
     
-
-    console.log(result);
     return result;
 }
