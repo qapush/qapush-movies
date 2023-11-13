@@ -21,17 +21,21 @@ export const filteredMovies = (movies, moviesFilters, selectedFilters) => {
     const moviesIds = [];
     const result = [];
     
-    // Get movie ids of selected filters
     for (const filterId of selectedFilters) {
         for (const movieId of moviesFilters[filterId].movies) {
-            if (!moviesIds.includes(movieId)
-                && (movies[movieId].genres.some(genre => genre.id === filterId)
-                    || movies[movieId].tags.some(tag => tag.id === filterId))) {
-                    moviesIds.push(movieId);
-            }
+            if (!moviesIds.includes(movieId)) moviesIds.push(movieId);
         }
     }
 
-    console.log(moviesIds);
+    for (const movieId of moviesIds) {
+        if (selectedFilters.every(filterId => {
+            return moviesFilters[filterId].movies.includes(movieId)
+        })) {
+            result.push(movieId)
+        }
+    }
+    
+
+    console.log(result);
     return result;
 }

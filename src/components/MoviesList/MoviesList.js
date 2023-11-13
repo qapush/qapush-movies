@@ -13,7 +13,7 @@ export default function MoviesList() {
   const moviesFilters = useSelector(filtersData);
   
   const moviesCards = selectedFilters.length > 0 ?
-    filteredMovies(movies, moviesFilters, selectedFilters).map( movie => <MovieCard key={movie.id} movie={movie} />)
+    filteredMovies(movies, moviesFilters, selectedFilters).map( movieId => <MovieCard key={movieId} movie={movies[movieId]} />)
     :
     Object.keys(movies).map(key => <MovieCard key={key} movie={movies[key]} />); 
 
