@@ -17,6 +17,13 @@
     }
 }
 
+@media (hover: none) {
+    .filter_button:hover {
+        background-color: none;
+        border-color: white;
+    }
+}
+
 .filters_close,
 .filter_button,
 .clear_button,
