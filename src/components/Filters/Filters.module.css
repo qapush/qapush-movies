@@ -8,11 +8,14 @@
     color: whitesmoke;
 }
 
-.filter_button:hover {
-    background-color: #48975d;
-    border-color: #48975d;
-}
 
+
+@media (hover: hover) {
+    .filter_button:hover {
+        background-color: #48975d;
+        border-color: #48975d;
+    }
+}
 
 .filters_close,
 .filter_button,
