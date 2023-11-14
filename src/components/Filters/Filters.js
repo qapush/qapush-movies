@@ -1,7 +1,7 @@
 import styles from './Filters.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { hideFiltersPage, filtersData, toggleFilter, selectedFiltersData, clearFilters } from '../../features/filters/filtersSlice';
-import { useRef } from 'react';
+
 
 
 export default function Filters() {
@@ -13,12 +13,11 @@ export default function Filters() {
         dispatch(hideFiltersPage())
     }
 
-    const focusRef = useRef(null);
+
 
     const hadleClick = (id) => {
         
         dispatch(toggleFilter(id))
-        focusRef.current.focus();
     }
 
     const handleClear = (id) => {
@@ -43,10 +42,10 @@ export default function Filters() {
     return (
         <div className={styles.filters}>
             <div className={styles.filters_header}>
-                <h2>Filters</h2>
                 <button className={styles.filters_close} onClick={handleClose}>X</button>
             </div>
             <div className={styles.filters_buttons}>
+            <h2>Filters</h2>
                 {filtersButtons}
             </div>
             <div className={styles.clear_all}> 
@@ -57,9 +56,8 @@ export default function Filters() {
                         Clear all
                 </button>
                 <button
-                        className={styles.clear_button}
-                        onClick={handleClear}
-                        ref={focusRef}
+                        className={styles.apply_button}
+                        onClick={handleClose}
                         >
                         Apply
                 </button>
