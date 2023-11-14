@@ -10,19 +10,14 @@
 
 
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .filter_button:hover {
         background-color: #48975d;
         border-color: #48975d;
     }
 }
 
-@media (hover: none) {
-    .filter_button:hover {
-        background-color: none;
-        border-color: white;
-    }
-}
+
 
 .filters_close,
 .filter_button,
