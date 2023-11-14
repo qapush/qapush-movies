@@ -11,16 +11,17 @@ export default function Filters() {
     const selectedFilters = useSelector(selectedFiltersData);
     const handleClose = () => {
         dispatch(hideFiltersPage())
+        document.body.style.overflow = 'auto';
     }
 
 
 
     const hadleClick = (id) => {
-        
         dispatch(toggleFilter(id))
     }
 
     const handleClear = (id) => {
+        
         dispatch(clearFilters())
 
     }
