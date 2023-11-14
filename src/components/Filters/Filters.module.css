@@ -16,7 +16,6 @@
 
 .filters_close,
 .filter_button,
-.filter_button:focus,
 .clear_button,
 .apply_button {
     color: whitesmoke;
