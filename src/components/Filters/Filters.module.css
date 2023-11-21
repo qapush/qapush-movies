@@ -6,6 +6,8 @@
     background-color: rgb(43, 43, 43);
     text-align: center;
     color: whitesmoke;
+    overflow: auto;
+    padding-bottom: 2rem;
 }
 
 
