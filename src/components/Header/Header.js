@@ -8,14 +8,17 @@ export default function Header(){
     const dispatch = useDispatch();
     const filters = useSelector(filtersData);
 
-    const handleClick = () => { 
-        document.body.style.overflow = 'hidden';
-        dispatch(showFiltersPage());
+    const handleClick = () => {
+        if(Object.keys(filters).length){
+            document.body.style.overflow = 'hidden';
+            dispatch(showFiltersPage());
+        }
+        
     }
     
     return(
-        Object.keys(filters).length > 0 ? <div className={styles.header}>
+        <div className={styles.header}>
             <button className='btn' onClick={handleClick}>Filters</button>
-        </div> : null
+        </div> 
     )
 }

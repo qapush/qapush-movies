@@ -5,6 +5,8 @@ import { selectedFiltersData, filtersData } from '../../features/filters/filters
 import MovieCard from '../MovieCard/MovieCard';
 import styles from './MoviesList.module.css';
 import { filteredMovies } from '../../utils/filters';
+import Lottie from "lottie-react";
+import emptyAnimation from "../../lotties/empty.json";
 
 export default function MoviesList() {
 
@@ -12,10 +14,32 @@ export default function MoviesList() {
   const selectedFilters = useSelector(selectedFiltersData);
   const moviesFilters = useSelector(filtersData);
   
-  const moviesCards = selectedFilters.length > 0 ?
+  const moviesCards = selectedFilters.length ?
     filteredMovies(movies, moviesFilters, selectedFilters).map( movieId => <MovieCard key={movieId} movie={movies[movieId]} />)
     :
     Object.keys(movies).map(key => <MovieCard key={key} movie={movies[key]} />); 
+
+  const emptyStyle = {
+    textAlign: 'center',
+    border: '1px solid red',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-center',
+    justifyContent: 'center',
+    zIndex: 0
+  }
+
+  const emptyLottieStyle = {
+    maxWidth: '300px',
+    margin: '0 auto'
+  }
+
+  if(selectedFilters.length && !moviesCards.length) {
+    return <div style={emptyStyle}>
+      <Lottie animationData={emptyAnimation} style={emptyLottieStyle}  />
+      <p>Try remove some filters...</p>
+    </div>
+  }
 
   return (
     <div className={styles.moviesList}>

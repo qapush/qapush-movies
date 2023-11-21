@@ -8,6 +8,7 @@
     color: whitesmoke;
     overflow: auto;
     padding-bottom: 2rem;
+    z-index: 3;
 }
 
 
