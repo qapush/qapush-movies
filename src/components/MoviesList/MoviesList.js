@@ -36,8 +36,8 @@ export default function MoviesList() {
   if(selectedFilters.length && !moviesCards.length) {
     return <div style={emptyStyle}>
       <Lottie animationData={emptyAnimation} style={emptyLottieStyle}  />
-      <p>Too many filters applied.</p>
-      <p> Try to remove some.</p>
+      <p>Too many filters applied</p>
+      <p> Try to remove some</p>
     </div>
   }
 
