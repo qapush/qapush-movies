@@ -21,7 +21,6 @@ export default function MoviesList() {
 
   const emptyStyle = {
     textAlign: 'center',
-    border: '1px solid red',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-center',
@@ -37,7 +36,8 @@ export default function MoviesList() {
   if(selectedFilters.length && !moviesCards.length) {
     return <div style={emptyStyle}>
       <Lottie animationData={emptyAnimation} style={emptyLottieStyle}  />
-      <p>Try remove some filters...</p>
+      <p>Too many filters applied.</p>
+      <p> Try to remove some.</p>
     </div>
   }
 
