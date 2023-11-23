@@ -6,8 +6,7 @@ import { moviesLoading, fetchMovies } from "../../features/movies/moviesSlice";
 import styles from './App.module.css';
 import MoviesList from '../MoviesList/MoviesList';
 import { filtersPageData } from "../../features/filters/filtersSlice";
-import Lottie from "lottie-react";
-import loadingAnimation from "../../lotties/loading.json";
+import Loader from "../Loader/Loader";
 
 function App() {
   const areMoviesLoading = useSelector(moviesLoading);
@@ -18,17 +17,11 @@ function App() {
     dispatch(fetchMovies());
   }, [dispatch])
 
-  const loadingStyle = {
-    width: '100%',
-    maxWidth: '200px',
-    margin: 'auto'
-  }
-
   return (
     <div className={styles.app}>
       <Header />
       { filtersPage ? <Filters/> : null}
-      { areMoviesLoading ? <Lottie animationData={loadingAnimation} style={loadingStyle} /> : <MoviesList/>}
+      { areMoviesLoading ? <Loader /> : <MoviesList/>}
       
     </div>
   );

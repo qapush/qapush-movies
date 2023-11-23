@@ -1,3 +1,13 @@
+.movieCard,
+.movieCard:link,
+.movieCard:visited,
+.movieCard:hover,
+.movieCard:active {
+    text-decoration: none;
+    color: unset;
+}
+
+
 .movieCard {
     padding: 1rem;
 }
@@ -11,7 +21,6 @@
     margin: 0.5rem auto;
 }
 
-.genres {}
 
 .genre {
     padding: 0.2rem;
