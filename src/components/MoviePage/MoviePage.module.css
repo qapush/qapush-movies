@@ -1,0 +1,13 @@
+.movie_page {
+    padding: 1rem;
+    max-width: 800px;
+    margin: auto;
+}
+
+.backdrop {
+    width: 100%;
+    display: block;
+    margin: auto;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
