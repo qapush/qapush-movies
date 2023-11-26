@@ -19,3 +19,11 @@
     background-color: #4a1334;
     color:  white;
 }
+
+@media only screen and (max-width: 500px) {
+    .movie_page button {
+        width: 95%;
+        margin: 2rem auto;
+        display: block;
+    }
+}

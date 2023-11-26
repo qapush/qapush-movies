@@ -40,8 +40,8 @@ export default function MoviePage() {
         <NotFound />
       </div>
     );
-  } else if (!Object.keys(movies).length || loading || !selectedMovie.data.title) {
-    console.log(movies.data);
+  } else if (!Object.keys(movies).length || loading || !selectedMovie.data.backdrop_path ) {
+    console.log();
 
     return (
       <div style={{ height: '100dvh', display: 'flex', justifyContent: 'center' }}>
