@@ -5,6 +5,7 @@ import { fetchMovies } from '../../features/movies/moviesSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from '../Loader/Loader';
 import NotFound from '../NotFound/NotFound';
+import { Link } from 'react-router-dom';
 import {
   selectedMovieData,
   getMovieDetailsData,
@@ -22,21 +23,27 @@ export default function MoviePage() {
   useEffect(() => {
     if (!Object.keys(movies).length) {
       dispatch(fetchMovies());
-    } else if (movies[movieId]?.title !== selectedMovie.title) {
-      dispatch(getMovieDetailsData({ title: movies[movieId].title, year: movies[movieId].year }));
+    } else if (movies[movieId]?.title !== selectedMovie.data.title) {
+      dispatch(
+        getMovieDetailsData({
+          title: movies[movieId].title,
+          year: movies[movieId].year,
+          serial: movies[movieId].serial,
+        }),
+      );
     }
   }, [movies]);
 
-  if (!Object.keys(movies).length || loading) {
-    return (
-      <div style={{ height: '100dvh', display: 'flex', justifyContent: 'center' }}>
-        <Loader />
-      </div>
-    );
-  } else if (Object.keys(movies).length && !movies[movieId]) {
+  if (Object.keys(movies).length && !movies[movieId]) {
     return (
       <div style={{ height: '100dvh', display: 'flex', justifyContent: 'center' }}>
         <NotFound />
+      </div>
+    );
+  } else if (!Object.keys(movies).length || loading || !selectedMovie.data.images) {
+    return (
+      <div style={{ height: '100dvh', display: 'flex', justifyContent: 'center' }}>
+        <Loader />
       </div>
     );
   }
@@ -50,6 +57,9 @@ export default function MoviePage() {
       />
       <h1>{selectedMovie.data.title}</h1>
       <p>{selectedMovie.data.overview}</p>
+      <Link to="/">
+        <button>Home</button>
+      </Link>
     </div>
   );
 }

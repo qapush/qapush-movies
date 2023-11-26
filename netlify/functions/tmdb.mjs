@@ -3,6 +3,8 @@ export default async (req, context) => {
   const reqURL = new URL(req.url);
   const title = reqURL.searchParams.get('title');
   const year = reqURL.searchParams.get('year');
+  // !! for converting into boolean
+  const serial = reqURL.searchParams.get('serial') === 'true';
   const options = {
     method: 'GET',
     headers: {
@@ -11,11 +13,16 @@ export default async (req, context) => {
     },
   };
 
+  console.log(title);
+  console.log(serial);
   try {
-    const movieData = fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${title}&include_adult=false&language=en-US&page=1&year=${year}`,
-      options,
-    )
+    const searchUrl = serial
+      ? `https://api.themoviedb.org/3/search/tv?query=${title}&include_adult=false&language=en-US&page=1&year=${year}`
+      : `https://api.themoviedb.org/3/search/movie?query=${title}&include_adult=false&language=en-US&page=1&year=${year}`;
+
+    console.log(searchUrl);
+
+    const movieData = fetch(searchUrl, options)
       .then((response) => response.json())
       .then((response) => response.results[0]);
 

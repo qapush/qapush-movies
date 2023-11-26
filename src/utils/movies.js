@@ -11,8 +11,8 @@ export const getMovies = async () => {
   return movies;
 };
 
-export const getMovieDetails = async (title, year) => {
-  const response = await fetch(`/api/tmdb/?title=${title}&year=${year}`);
+export const getMovieDetails = async (title, year, serial) => {
+  const response = await fetch(`/api/tmdb/?title=${title}&year=${year}&serial=${serial}`);
 
   if (!response.ok) {
     const errMsg = await response.json();
@@ -34,6 +34,7 @@ const formMoviesData = (data) => {
       genres: Genre.multi_select.map(({ name, id, color }) => ({ name, id, color })),
       tags: Tags.multi_select.map(({ name, id, color }) => ({ name, id, color })),
       poster: Poster.files[0]?.file.url || process.env.PUBLIC_URL + '/no-poster.svg',
+      serial: Tags.multi_select.map(({ name }) => name).includes('Serial'),
     };
   });
   return result;

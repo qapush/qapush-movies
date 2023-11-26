@@ -11,3 +11,11 @@
     border-radius: 1rem;
     margin-bottom: 2rem;
 }
+
+.movie_page button {
+    margin-top: 2rem;
+    padding: 1rem;
+    font-size: 1.1rem;
+    background-color: #4a1334;
+    color:  white;
+}

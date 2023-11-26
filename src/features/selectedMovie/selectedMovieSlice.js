@@ -3,15 +3,15 @@ import { getMovieDetails } from '../../utils/movies';
 
 export const getMovieDetailsData = createAsyncThunk(
   'selectedMovie/getDetails',
-  async ({ title, year }) => {
-    const data = await getMovieDetails(title, year);
+  async ({ title, year, serial }) => {
+    const data = await getMovieDetails(title, year, serial);
     return data;
   },
 );
 
 const selectedMovieSlice = createSlice({
   name: 'selectedMovie',
-  initialState: { loading: true, data: {} },
+  initialState: { loading: false, data: {} },
   extraReducers: {
     [getMovieDetailsData.fulfilled]: (state, { payload }) => {
       return { loading: false, data: payload.data };
