@@ -40,7 +40,7 @@ export default function MoviePage() {
         <NotFound />
       </div>
     );
-  } else if (!Object.keys(movies).length || loading || !selectedMovie.data.images) {
+  } else if (!Object.keys(movies).length || loading || !selectedMovie.data.iam) {
     return (
       <div style={{ height: '100dvh', display: 'flex', justifyContent: 'center' }}>
         <Loader />
