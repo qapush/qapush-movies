@@ -15,9 +15,11 @@ function App() {
 
   useEffect(() => {
     const moviesPromise = dispatch(fetchMovies());
+
     return () => {
       moviesPromise.abort();
     };
+
   }, [dispatch]);
 
   return (

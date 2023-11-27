@@ -4,6 +4,7 @@
     margin: auto;
 }
 
+
 .backdrop {
     width: 100%;
     display: block;
@@ -12,13 +13,7 @@
     margin-bottom: 2rem;
 }
 
-.movie_page button {
-    margin-top: 2rem;
-    padding: 1rem;
-    font-size: 1.1rem;
-    background-color: #4a1334;
-    color:  white;
-}
+
 
 @media only screen and (max-width: 500px) {
     .movie_page button {
@@ -26,4 +21,13 @@
         margin: 2rem auto;
         display: block;
     }
+}
+
+.backBtn {
+    background-color: burlywood;
+}
+
+:global(.darkmode) .backBtn  {
+    background-color: rgb(48 79 145 / 99%);
+    color: antiquewhite;
 }

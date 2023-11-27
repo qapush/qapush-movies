@@ -10,7 +10,7 @@ import {
   selectedMovieData,
   getMovieDetailsData,
   selectedMovieLoadnigData,
-} from '../../features/selectedMovie/selectedMovieSlice';
+} from '../../features/selectedMovie/selectedMovieSlice'; 
 import styles from './MoviePage.module.css';
 
 export default function MoviePage() {
@@ -60,7 +60,7 @@ export default function MoviePage() {
       <h1>{selectedMovie.data.title}</h1>
       <p>{selectedMovie.data.overview}</p>
       <Link to="/">
-        <button>Home</button>
+        <button className={styles.backBtn + ' btn'}>Home</button>
       </Link>
     </div>
   );

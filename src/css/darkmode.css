@@ -1,0 +1,20 @@
+.darkmode {
+    background-color: grey;
+  }
+
+
+.darkmode h2,
+.darkmode span,
+.darkmode p,
+.darkmode a,
+.darkmode hr {
+    color: lightgrey;
+}
+
+.darkmode h1 {
+  color: cornsilk;
+}
+
+.darkmode span {
+  border-color: lightgrey;
+}

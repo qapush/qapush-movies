@@ -5,6 +5,7 @@ import App from './components/App/App';
 import MoviePage from './components/MoviePage/MoviePage';
 import { store } from './store'
 import { Provider } from 'react-redux'
+import Wrapper from './components/Wrapper/Wrapper';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -14,6 +15,7 @@ import {
 } from "react-router-dom";
 
 const router = createBrowserRouter(
+  
   createRoutesFromElements(
     <>
       <Route path="/" element={<App /> } />
@@ -24,10 +26,14 @@ const router = createBrowserRouter(
   )
 );
 
+const rootElement = document.getElementById('root');
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const root = ReactDOM.createRoot(rootElement);
 root.render(
   <Provider store={store}>
-   <RouterProvider router={router} />
+   <Wrapper>
+    <RouterProvider router={router} />
+    </Wrapper>
   </Provider>
 );
