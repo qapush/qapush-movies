@@ -1,12 +1,15 @@
 const root = document.querySelector("body");
-const localTheme = localStorage.getItem("theme");
+
 const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
   ? "dark"
   : "light";
 
-export const setToggler = ({ current: toggler }, play = false) => {
+export const setToggler = ({ current: toggler }, play) => {
+
+    const localTheme = localStorage.getItem("theme");
   
-    if(!play){
+    if(play !== true){
+        console.log(localTheme);
         switch (localTheme) {
             case "light":
               setLight(toggler);
@@ -17,8 +20,8 @@ export const setToggler = ({ current: toggler }, play = false) => {
             default:
               break;
           }
-    } else if(play){
-        console.log('play');
+    } else if(play === true){
+
         switch (localStorage.getItem("theme")) {
             case "light":
               setDark(toggler, play);
@@ -34,6 +37,9 @@ export const setToggler = ({ current: toggler }, play = false) => {
 };
 
 export const setThemeAuto = () => {
+
+const localTheme = localStorage.getItem("theme");
+
   const theme = localTheme || systemTheme;
 
   switch (theme) {

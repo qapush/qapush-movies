@@ -6,6 +6,7 @@ import { setThemeAuto } from '../../utils/theme';
 export default function Wrapper() {
 
   useEffect(() => {
+
     setThemeAuto();
   }, [])
 

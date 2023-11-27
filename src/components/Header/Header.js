@@ -16,7 +16,10 @@ export default function Header(){
     const filters = useSelector(filtersData);
     const lottieRef = useRef();
 
-    useEffect( () => { setToggler(lottieRef, false) }, [] )
+    useEffect( () => { 
+
+        setToggler(lottieRef, false) 
+    }, [] )
 
     const handleClick = () => {
         document.body.style.overflow = 'hidden';

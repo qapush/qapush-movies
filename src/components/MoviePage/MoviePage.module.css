@@ -15,19 +15,21 @@
 
 
 
-@media only screen and (max-width: 500px) {
-    .movie_page button {
-        width: 95%;
-        margin: 2rem auto;
-        display: block;
-    }
-}
+
 
 .backBtn {
     background-color: burlywood;
+    margin: 2rem auto;
 }
 
 :global(.darkmode) .backBtn  {
     background-color: rgb(48 79 145 / 99%);
     color: antiquewhite;
+}
+
+@media only screen and (max-width: 500px) {
+    .backBtn {
+        width: 95%;
+        display: block;
+    }
 }
