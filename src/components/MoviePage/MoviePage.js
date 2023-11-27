@@ -10,7 +10,7 @@ import {
   selectedMovieData,
   getMovieDetailsData,
   selectedMovieLoadnigData,
-} from '../../features/selectedMovie/selectedMovieSlice'; 
+} from '../../features/selectedMovie/selectedMovieSlice';
 import styles from './MoviePage.module.css';
 
 export default function MoviePage() {
@@ -40,9 +40,7 @@ export default function MoviePage() {
         <NotFound />
       </div>
     );
-  } else if (!Object.keys(movies).length || loading || !selectedMovie.data.backdrop_path ) {
-    console.log();
-
+  } else if (!Object.keys(movies).length || loading || !selectedMovie.data.backdrop_path) {
     return (
       <div style={{ height: '100dvh', display: 'flex', justifyContent: 'center' }}>
         <Loader />

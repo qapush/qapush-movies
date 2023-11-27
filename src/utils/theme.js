@@ -1,55 +1,48 @@
-const root = document.querySelector("body");
+const root = document.querySelector('body');
 
-const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
-  ? "dark"
-  : "light";
+const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
 export const setToggler = ({ current: toggler }, play) => {
+  const localTheme = localStorage.getItem('theme');
 
-    const localTheme = localStorage.getItem("theme");
-  
-    if(play !== true){
-        console.log(localTheme);
-        switch (localTheme) {
-            case "light":
-              setLight(toggler);
-              break;
-            case "dark":
-              setDark(toggler);
-              break;
-            default:
-              break;
-          }
-    } else if(play === true){
-
-        switch (localStorage.getItem("theme")) {
-            case "light":
-              setDark(toggler, play);
-              break;
-            case "dark":
-              setLight(toggler, play);
-              break;
-            default:
-              break;
-          }
+  if (play !== true) {
+    switch (localTheme) {
+      case 'light':
+        setLight(toggler);
+        break;
+      case 'dark':
+        setDark(toggler);
+        break;
+      default:
+        break;
     }
-   
+  } else if (play === true) {
+    switch (localStorage.getItem('theme')) {
+      case 'light':
+        setDark(toggler, play);
+        break;
+      case 'dark':
+        setLight(toggler, play);
+        break;
+      default:
+        break;
+    }
+  }
 };
 
 export const setThemeAuto = () => {
-
-const localTheme = localStorage.getItem("theme");
+  const localTheme = localStorage.getItem('theme');
 
   const theme = localTheme || systemTheme;
 
   switch (theme) {
-    case "light":
-      root.classList.remove("darkmode");
-      localStorage.setItem("theme", "light");
+    case 'light':
+      root.classList.remove('darkmode');
+      localStorage.setItem('theme', 'light');
       break;
-    case "dark":
-      root.classList.add("darkmode");
-      localStorage.setItem("theme", "dark");
+    case 'dark':
+      root.classList.add('darkmode');
+      localStorage.setItem('theme', 'dark');
       break;
     default:
       break;
@@ -58,8 +51,8 @@ const localTheme = localStorage.getItem("theme");
 
 function setDark(toggler, play) {
   toggler.goToAndStop(0, true);
-  root.classList.add("darkmode");
-  localStorage.setItem("theme", "dark");
+  root.classList.add('darkmode');
+  localStorage.setItem('theme', 'dark');
   if (play) {
     toggler.setDirection(-1);
     toggler.goToAndPlay(80, true);
@@ -68,8 +61,8 @@ function setDark(toggler, play) {
 
 function setLight(toggler, play) {
   toggler.goToAndStop(134, true);
-  root.classList.remove("darkmode");
-  localStorage.setItem("theme", "light");
+  root.classList.remove('darkmode');
+  localStorage.setItem('theme', 'light');
   if (play) {
     toggler.setDirection(1);
     toggler.goToAndPlay(50, true);
