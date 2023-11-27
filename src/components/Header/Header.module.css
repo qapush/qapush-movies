@@ -1,6 +1,29 @@
 .header {
     padding: 0.5rem 20px;
-    background-color: rgb(43, 43, 43);
+    background-color: rgb(223, 223, 223);
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+}
+
+.filtersBtn {
+    background-color: rgb(80, 80, 80);
+    color:rgb(223, 223, 223);
+}
+
+:global(.darkmode) .header {
+    background-color: rgb(80, 80, 80);
+}
+
+:global(.darkmode) .filtersBtn {
+    background-color: rgb(239, 239, 239);
+    color: black;
+}
+
+.header svg {
+    scale: 1.5;
+    cursor: pointer;
+}
+
+.header svg:focus {
+    outline: none;
 }

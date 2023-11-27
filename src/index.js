@@ -17,12 +17,11 @@ import {
 const router = createBrowserRouter(
   
   createRoutesFromElements(
-    <>
-      <Route path="/" element={<App /> } />
+    <Route path="/" element={<Wrapper />}>
+      <Route path="/" element={<App/>} />
       <Route path="/movie/:movieId" element={<MoviePage />} />
       <Route path="*" element={<Navigate to="/" />} />
-    </>
-    
+    </Route>
   )
 );
 
@@ -32,8 +31,6 @@ const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <Provider store={store}>
-   <Wrapper>
-    <RouterProvider router={router} />
-    </Wrapper>
+      <RouterProvider router={router} />
   </Provider>
 );

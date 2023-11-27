@@ -1,28 +1,17 @@
-import React from 'react'
+import { Outlet } from 'react-router-dom';
+import { useEffect } from 'react';
+import { setThemeAuto } from '../../utils/theme';
 
-export default function Wrapper({children}) {
 
-const wrapper = document.querySelector('body');
+export default function Wrapper() {
 
-const media = window.matchMedia('(prefers-color-scheme: dark)');
-
-const toggleMode = () => {
-    wrapper.classList.remove('darkmode');
-  if (media.matches) {
-    wrapper.classList.add('darkmode');
-  }
-}
-
-media.addEventListener('change', () => {
-  toggleMode();
-})
-
-toggleMode();
-
+  useEffect(() => {
+    setThemeAuto();
+  }, [])
 
   return (
     <div id='wrapper'>
-        {children}
+        <Outlet/>
     </div>
   )
 }
