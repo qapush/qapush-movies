@@ -28,7 +28,8 @@ export default function Header(){
 
 
     const switchStyle = {
-        maxHeight: '3rem'
+        maxHeight: '3rem',
+        maxWidth: '3rem'
     }
 
     return(
