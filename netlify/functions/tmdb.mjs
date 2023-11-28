@@ -48,4 +48,5 @@ export default async (req, context) => {
 
 export const config = {
   path: '/api/tmdb',
+  preferStatic: true
 };
