@@ -26,6 +26,7 @@ export default async (req, context) => {
     start_cursor = response.next_cursor;
   } while (response.has_more && response.next_cursor);
   console.log('Successfully fetched movies data from notion');
+  if(!data) return new Response('dupa');
   return new Response(JSON.stringify({ data }));
 };
 
