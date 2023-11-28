@@ -12,3 +12,6 @@
   transition: background-color 300ms ease-in, color 300ms ease-in;
 }
 
+body {
+  background-color: rgb(223, 223, 223);
+}
