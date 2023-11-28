@@ -2,7 +2,6 @@ import { Client } from '@notionhq/client';
 
 // eslint-disable-next-line
 export default async (req, context) => {
-  console.log(req);
   const notion = new Client({ auth: process.env.NOTION });
   let response;
   let data = [];
@@ -11,7 +10,7 @@ export default async (req, context) => {
   // Notion database query has a limit of 100 items per request
   // In case the database has more entries, make pagination requests
   // to add up entries to the data array
-  console.log('here1');
+
   do {
     try {
       response = await notion.databases.query({
@@ -26,12 +25,10 @@ export default async (req, context) => {
     data.push(...response.results);
     start_cursor = response.next_cursor;
   } while (response.has_more && response.next_cursor);
-  console.log('Successfully fetched movies data from notion');
-  if(!data) return new Response('dupa');
+
   return new Response(JSON.stringify({ data }));
 };
 
 export const config = {
   path: '/api/notion',
-  preferStatic: true
 };
