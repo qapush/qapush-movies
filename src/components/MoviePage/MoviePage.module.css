@@ -14,17 +14,15 @@
 }
 
 
-
-
-
 .backBtn {
-    background-color: burlywood;
+    background-color: color(srgb 0 0 0);
     margin: 2rem auto;
+    color: color(srgb 0.8744 0.8745 0.8746);
 }
 
 :global(.darkmode) .backBtn  {
-    background-color: rgb(48 79 145 / 99%);
-    color: antiquewhite;
+    background-color: rgba(198, 198, 198, 0.99);
+    color: black;
 }
 
 @media only screen and (max-width: 500px) {
