@@ -21,7 +21,7 @@ export const moviesSlice = createSlice({
       state.loading = false;
     });
     builder.addCase(fetchMovies.rejected, (state, action) => {
-      console.error(action.error);
+      // console.error(action.error);
     });
   },
 });
