@@ -15,8 +15,7 @@ function App() {
 
   useEffect(() => {
     const moviesPromise = dispatch(fetchMovies());
-    fetch('/api/notion')
-    fetch('/api/tmdb')
+
     return () => {
       moviesPromise.abort();
     };
