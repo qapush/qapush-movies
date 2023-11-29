@@ -8,3 +8,13 @@
     max-width: 900px;
     height: 100%;
 }
+
+@media only screen and (max-width: 600px) {
+    .moviesList {
+        display: block;
+        padding: 1rem;
+        margin: auto;
+        width: auto;
+        min-width: auto;
+    }
+}
