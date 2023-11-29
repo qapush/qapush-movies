@@ -19,6 +19,7 @@ export default function Header(){
     useEffect( () => { 
 
         setToggler(lottieRef, false) 
+        
     }, [] )
 
     const handleClick = () => {
