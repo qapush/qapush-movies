@@ -13,11 +13,16 @@ import {
 } from '../../features/selectedMovie/selectedMovieSlice';
 import styles from './MoviePage.module.css';
 
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+
+
 export default function MoviePage() {
+
   const { movieId } = useParams();
   const movies = useSelector(moviesData);
   const selectedMovie = useSelector(selectedMovieData);
-  const loading = useSelector(selectedMovieLoadnigData);
+  const selectedMovieLoadning = useSelector(selectedMovieLoadnigData);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,25 +45,31 @@ export default function MoviePage() {
         <NotFound />
       </div>
     );
-  } else if (!Object.keys(movies).length || loading || !selectedMovie.data.backdrop_path) {
-    return (
-      <div style={{ height: '100dvh', display: 'flex', justifyContent: 'center' }}>
-        <Loader />
-      </div>
-    );
-  }
+  } 
+  
+  // if (!Object.keys(movies).length || selectedMovieLoadning || !selectedMovie.data.backdrop_path) {
+  //   return (
+  //     <div style={{ height: '100dvh', display: 'flex', justifyContent: 'center' }}>
+  //       <Loader />
+  //     </div>
+  //   );
+  // }
+
+  const loading = !Object.keys(movies).length || selectedMovieLoadning || !selectedMovie.data.backdrop_path;
+
+  
 
   return (
     <div className={styles.movie_page}>
-      <img
+      { loading ? <Skeleton height={400} /> : <img
         className={styles.backdrop}
         src={`${selectedMovie.data.images.secure_base_url}/w1280/${selectedMovie.data.backdrop_path}`}
         alt=""
-      />
-      <h1>{selectedMovie.data.title}</h1>
+      />}
+      <h1>{ loading ? <Skeleton count={3} height={30} /> : selectedMovie.data.title}</h1>
       <p>{selectedMovie.data.overview}</p>
       <Link to="/">
-        <button className={styles.backBtn + ' btn'}>Home</button>
+        { loading ? null : <button className={styles.backBtn + ' btn'}>Home</button> }
       </Link>
     </div>
   );
