@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./MovieCard.module.css";
 import { Link } from "react-router-dom";
-import Skeleton from 'react-loading-skeleton'
+
 
 
 export default function MovieCard({ movie }) {

@@ -1,0 +1,18 @@
+import React from "react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import styles from './MoviesListSkeleton.module.css';
+
+export default function MoviesListSkeleton() {
+  return (
+    <div className={styles.moviesLoader}>
+      {new Array(30).fill(1).map((i) => {
+        return (
+          <div className={styles.moviesLoaderCard}>
+            <Skeleton className={styles.moviesLoaderCardSkeleton}/>
+          </div>
+        );
+      })}
+    </div>
+  );
+}

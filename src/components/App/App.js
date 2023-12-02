@@ -6,7 +6,8 @@ import { moviesLoading, fetchMovies } from '../../features/movies/moviesSlice';
 import styles from './App.module.css';
 import MoviesList from '../MoviesList/MoviesList';
 import { filtersPageData } from '../../features/filters/filtersSlice';
-import Loader from '../Loader/Loader';
+import MoviesListSkeleton from '../MoviesListSkeleton/MoviesListSkeleton';
+
 
 function App() {
   const areMoviesLoading = useSelector(moviesLoading);
@@ -26,7 +27,9 @@ function App() {
     <div className={styles.app}>
       <Header />
       {filtersPage ? <Filters /> : null}
-      {areMoviesLoading ? <Loader /> : <MoviesList />}
+  
+      
+      {areMoviesLoading ? <MoviesListSkeleton /> : <MoviesList />}
     </div>
   );
 }

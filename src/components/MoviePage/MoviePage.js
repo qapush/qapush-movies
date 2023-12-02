@@ -61,7 +61,7 @@ export default function MoviePage() {
 
   return (
     <div className={styles.movie_page}>
-      { loading ? <Skeleton height={400} /> : <img
+      { loading ? <Skeleton className={styles.imageSkeleton} /> : <img
         className={styles.backdrop}
         src={`${selectedMovie.data.images.secure_base_url}/w1280/${selectedMovie.data.backdrop_path}`}
         alt=""
