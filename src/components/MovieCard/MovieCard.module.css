@@ -32,6 +32,7 @@
     border-radius: 5px;
     display: block;
     aspect-ratio: 100/150;
+    min-width: 100px;
 }
 
 .description {
