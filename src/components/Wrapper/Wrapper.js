@@ -19,7 +19,7 @@ export default function Wrapper() {
         <Header />
         <Outlet/>
         <div className={styles.footer}>
-          <Link to="/recommend">recommend movie or serial</Link>
+          <Link to="/recommend">recommend movie or serial 🎬</Link>
         </div>
     </div>
   )
