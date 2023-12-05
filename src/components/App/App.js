@@ -1,4 +1,3 @@
-import Header from '../Header/Header';
 import Filters from '../Filters/Filters';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,10 +8,12 @@ import { filtersPageData } from '../../features/filters/filtersSlice';
 import MoviesListSkeleton from '../MoviesListSkeleton/MoviesListSkeleton';
 
 
+
 function App() {
   const areMoviesLoading = useSelector(moviesLoading);
   const filtersPage = useSelector(filtersPageData);
   const dispatch = useDispatch();
+  
 
   useEffect(() => {
     const moviesPromise = dispatch(fetchMovies());
@@ -25,10 +26,7 @@ function App() {
 
   return (
     <div className={styles.app}>
-      <Header />
       {filtersPage ? <Filters /> : null}
-  
-      
       {areMoviesLoading ? <MoviesListSkeleton /> : <MoviesList />}
     </div>
   );

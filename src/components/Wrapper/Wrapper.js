@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { useEffect } from 'react';
 import { setThemeAuto } from '../../utils/theme';
+import Header from '../Header/Header';
 
 
 export default function Wrapper() {
@@ -12,6 +13,7 @@ export default function Wrapper() {
 
   return (
     <div id='wrapper'>
+        <Header />
         <Outlet/>
     </div>
   )

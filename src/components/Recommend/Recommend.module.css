@@ -1,0 +1,15 @@
+.recommend input, 
+.recommend button,
+.recommend label,
+.recommend select,
+.recommend form {
+    display: block;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.recommend form {
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+}

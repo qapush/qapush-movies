@@ -15,13 +15,16 @@ import {
 } from "react-router-dom";
 import Recommend from "./components/Recommend/Recommend";
 import { SkeletonTheme } from "react-loading-skeleton";
+import ButtonFilters from "./components/ButtonFilters/ButtonFilters";
+import ButtonHome from "./components/ButtonHome/ButtonHome";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Wrapper />}>
-      <Route path="/" element={<App />} />
-      <Route path="/recommend" element={<Recommend />} />
-      <Route path="/movie/:movieId" element={<MoviePage />} />
+      <Route path="/" element={<App />} handle={{button: () => <ButtonFilters/>}}/>
+      <Route path="/recommend" element={<Recommend />} handle={{button: () => <ButtonHome/>}}/>
+      <Route path="/movie/:movieId" element={<MoviePage />} handle={{button: () => <ButtonHome/>}}/>
       <Route path="*" element={<Navigate to="/" />} />
     </Route>
   )

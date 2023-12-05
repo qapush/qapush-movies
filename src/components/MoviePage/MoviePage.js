@@ -3,9 +3,8 @@ import { useParams } from 'react-router-dom';
 import { moviesData } from '../../features/movies/moviesSlice';
 import { fetchMovies } from '../../features/movies/moviesSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import Loader from '../Loader/Loader';
 import NotFound from '../NotFound/NotFound';
-import { Link } from 'react-router-dom';
+import { useMatches } from 'react-router-dom';
 import {
   selectedMovieData,
   getMovieDetailsData,
@@ -24,6 +23,9 @@ export default function MoviePage() {
   const selectedMovie = useSelector(selectedMovieData);
   const selectedMovieLoadning = useSelector(selectedMovieLoadnigData);
   const dispatch = useDispatch();
+
+  const matches = useMatches();
+  const button = matches.filter( (match) => Boolean(match.handle?.button) )[0]?.handle.button() || null;
 
   useEffect(() => {
     if (!Object.keys(movies).length) {
@@ -46,14 +48,6 @@ export default function MoviePage() {
       </div>
     );
   } 
-  
-  // if (!Object.keys(movies).length || selectedMovieLoadning || !selectedMovie.data.backdrop_path) {
-  //   return (
-  //     <div style={{ height: '100dvh', display: 'flex', justifyContent: 'center' }}>
-  //       <Loader />
-  //     </div>
-  //   );
-  // }
 
   const loading = !Object.keys(movies).length || selectedMovieLoadning || !selectedMovie.data.backdrop_path;
 
@@ -68,9 +62,6 @@ export default function MoviePage() {
       />}
       <h1>{ loading ? <Skeleton count={3} height={30} /> : selectedMovie.data.title}</h1>
       <p>{selectedMovie.data.overview}</p>
-      <Link to="/">
-        { loading ? null : <button className={styles.backBtn + ' btn'}>Home</button> }
-      </Link>
     </div>
   );
 }
