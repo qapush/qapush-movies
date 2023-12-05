@@ -16,7 +16,13 @@ export default async (req, context) => {
       response = await notion.databases.query({
         database_id: process.env.DATABASE_ID,
         start_cursor,
-      });
+        sorts: [
+          {
+            property: "Title",
+            direction: "ascending"
+          }
+        ],
+      }, );
     } catch (e) {
       console.log(e);
       return new Response(JSON.stringify({ error: 'Notion fetch failed' }), { status: 500 });
