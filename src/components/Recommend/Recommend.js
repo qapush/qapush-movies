@@ -38,7 +38,7 @@ export default function Recommend() {
 
   const info = status === 'idle' || status === 'sending' ? 
     null : status === 'success' ? 
-      'Sent successfully' : 'Failed to send';
+      'Sent successfully ✔' : 'Failed to send ❌';
   
 
   return (
