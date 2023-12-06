@@ -10,15 +10,23 @@ export default function Recommend() {
   }
 
   const [formData, setFormData] = useState({...initialForm})
+  const [status, setStatus] = useState('idle');
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
     fetch('/api/recommend', {
       method: 'POST',
       body: JSON.stringify(formData)
     })
-    setFormData({...initialForm})
+    .then(res => res.json())
+    .then(res => {
+      setFormData({...initialForm})
+      setStatus( res.success ? 'success' : 'error')
+      setTimeout(() => {
+        setStatus( 'idle')
+      }, 2000)
+    })
+    
   };
 
   const handleChange = (e) => {
@@ -27,6 +35,10 @@ export default function Recommend() {
       [e.target.id]: e.target.value
     }))
   }
+
+  const info = status === 'idle' || status === 'sending' ? 
+    null : status === 'success' ? 
+      'Sent successfully' : 'Failed to send';
   
 
   return (
@@ -45,8 +57,11 @@ export default function Recommend() {
           <option value="Movie">Movie</option>
         </select>
 
-        <button className='btn' type="submit">Recommend</button>
+        <button className='btn' type="submit" enabled={ (status === 'idle').toString() }>Recommend</button>
       </form>
+      <p className={styles.info}>
+        { info }
+      </p>
     </div>
   );
 }

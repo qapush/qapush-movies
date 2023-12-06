@@ -1,3 +1,4 @@
+
 .recommend input, 
 .recommend button,
 .recommend label,
@@ -25,3 +26,7 @@
     padding: 1rem;
 }
 
+.info {
+    margin-top: 2rem;
+    text-align: center;
+}
