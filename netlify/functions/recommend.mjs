@@ -22,41 +22,27 @@ const handler = async function(request, context) {
 
     try{
 
-      const htmlMessage = `<style>
-  
-      table {
-        border-collapse: collapse;
-      }
-      
-      tr:nth-child(odd){
-        background-color: lightgrey;
-      }
-      
-      td, th {
-        padding: 1rem;
-      }
-    </style>
-    
-    <table>
-      <tr>
-        <th>Title</th>
-        <td>${title}</td>
-      </tr>
-        <tr>
-        <th>Year</th>
-        <td>${year}</td>
-      </tr>
-        <tr>
-        <th>Type</th>
-        <td>${type}</td>
-      </tr>
-      
-    </table>`
+      const htmlMessage = `      
+        <table style="border-collapse: collapse;">
+          <tr style="background-color: lightgrey;">
+            <th style="padding: 0.5rem;">Title</th>
+            <td style="padding: 0.5rem;">${title}</td>
+          </tr>
+          <tr>
+            <th style="padding: 0.5rem;">Year</th>
+            <td style="padding: 0.5rem;">${year}</td>
+          </tr>
+          <tr style="background-color: lightgrey;">
+            <th style ="padding: 0.5rem;">Type</th>
+            <td style="padding: 0.5rem;">${type}</td>
+          </tr>
+        </table>
+      `
 
       const info = await transporter.sendMail({
-          from: 'M. Kapush Contact" <misha@qapush.com>',
+          from: 'Movie Database" <misha@qapush.com>',
           to: "mihail.kapush@gmail.com",
-          subject: `Movie recommendation nr ${id}`, 
+          subject: `Recommendation nr ${id}`, 
           text: `Title: ${title}; Year: ${year}; Type: ${type}`, 
           html: htmlMessage, 
         });

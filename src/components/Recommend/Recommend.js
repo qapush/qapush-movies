@@ -14,6 +14,7 @@ export default function Recommend() {
   
   const handleSubmit = (e) => {
     e.preventDefault();
+    setStatus('sending');
     fetch('/api/recommend', {
       method: 'POST',
       body: JSON.stringify(formData)
@@ -23,7 +24,7 @@ export default function Recommend() {
       setFormData({...initialForm})
       setStatus( res.success ? 'success' : 'error')
       setTimeout(() => {
-        setStatus( 'idle')
+        setStatus('idle')
       }, 2000)
     })
     
@@ -36,9 +37,10 @@ export default function Recommend() {
     }))
   }
 
-  const info = status === 'idle' || status === 'sending' ? 
-    null : status === 'success' ? 
-      'Sent successfully ✔' : 'Failed to send ❌';
+  const info = status === 'idle' 
+  ? null : status === 'sending' 
+  ? 'Sending...📨' : status === 'success' 
+  ? 'Sent successfully ✔' : 'Failed to send ❌';
   
 
   return (
